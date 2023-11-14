@@ -17,3 +17,7 @@ aws dynamodb\
         --key-schema\
             AttributeName=pet_id,KeyType=HASH\
         --billing-mode PAY_PER_REQUEST   --billing-mode PAY_PER_REQUEST
+
+
+# Step 2 create back up plan
+
