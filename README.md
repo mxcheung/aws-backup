@@ -21,3 +21,25 @@ aws dynamodb\
 
 # Step 2 create back up plan
 
+
+```python
+
+aws dynamodb\
+    create-table\
+        --table-name PetInventory\
+        --attribute-definitions\
+            AttributeName=pet_id,AttributeType=S\
+        --key-schema\
+            AttributeName=pet_id,KeyType=HASH\
+        --billing-mode PAY_PER_REQUEST   --billing-mode PAY_PER_REQUEST
+
+
+
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/backuprestore_HowItWorksAWS.html
+
+
+https://aws.amazon.com/blogs/database/set-up-scheduled-backups-for-amazon-dynamodb-using-aws-backup/
+
+https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html
+
