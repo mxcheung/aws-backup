@@ -24,6 +24,14 @@ aws dynamodb\
 
 ```python
 
+aws backup create-backup \
+    --backup-vault-name YourBackupVaultName \
+    --resource-arn arn:aws:dynamodb:region:account-id:table/YourTableName
+
+
+
+
+
 aws dynamodb\
     create-table\
         --table-name PetInventory\
