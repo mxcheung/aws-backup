@@ -8,6 +8,12 @@ class MyBackupStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // Define an AWS Backup vault
+    const backupVault = new backup.CfnBackupVault(this, 'MyBackupVault', {
+      backupVaultName: 'MyBackupVault',
+    });
+
+
     // Define an AWS Backup plan
     const backupPlan = new backup.CfnBackupPlan(this, 'MyBackupPlan', {
       backupPlan: {
