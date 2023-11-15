@@ -31,6 +31,13 @@ class MyBackupStack extends cdk.Stack {
         ],
       },
     });
+
+    // add table
+    backup_plan.add_selection("Selection",
+     resources=[
+         backup.BackupResource.from_dynamo_db_table(table)
+     ])
+
   }
 }
 
