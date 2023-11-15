@@ -38,6 +38,16 @@ class MyBackupStack extends cdk.Stack {
          backup.BackupResource.from_dynamo_db_table(table)
      ])
 
+    // Add a backup selection for the existing DynamoDB table
+    const backupSelection = new backup.CfnBackupSelection(this, 'MyBackupSelection', {
+      backupPlanId: backupPlan.ref,
+      selectionName: 'MyBackupSelection',
+      iamRoleArn: backupRole.roleArn,
+      resources: [
+        'arn:aws:dynamodb:us-east-1:123456789012:table/demotable', // Replace with the actual DynamoDB table ARN
+      ],
+    });
+
   }
 }
 
