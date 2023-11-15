@@ -13,7 +13,6 @@ class MyBackupStack extends cdk.Stack {
       backupVaultName: 'MyBackupVault',
     });
 
-
     // Define an AWS Backup plan
     const backupPlan = new backup.CfnBackupPlan(this, 'MyBackupPlan', {
       backupPlan: {
@@ -21,7 +20,7 @@ class MyBackupStack extends cdk.Stack {
         rules: [
           {
             ruleName: 'DailyBackup',
-            targetBackupVault: 'arn:aws:backup:us-east-1:123456789012:backup-vault:MyBackupVault',
+            targetBackupVault: backupVault.attrBackupVaultArn,
             scheduleExpression: 'cron(0 0 * * ? *)', // Daily at midnight
             startWindowMinutes: 60,
             completionWindowMinutes: 60,
