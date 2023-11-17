@@ -1,4 +1,4 @@
-#aws-backup-plan
+# aws-backup-plan
 
 ```
 import * as cdk from 'aws-cdk-lib';
@@ -53,3 +53,13 @@ class MyBackupStack extends cdk.Stack {
 
 const app = new cdk.App();
 new MyBackupStack(app, 'MyBackupStack');
+```
+
+# permission related issues
+
+```
+Failed resources:
+WeeklyBackupAwsBackupPlanCdkStack | 5:04:13 AM | CREATE_FAILED       | AWS::Backup::BackupSelection | WeeklyBackupSelection Resource handler returned message: "User: arn:aws:sts::12344:assumed-role/cdk-hnds-cfn-exec-role-12344-eu-central-1/AWSCloudFormation is not authorized to perform: iam:PassRole on resource: arn:aws:iam::12344:role/local-backup-vault-role with an explicit deny in an identity-based policy 
+(Service: Backup, Status Code: 403, Request ID: 1b646fd7-af06-4104-9350-c9ed82086b7c)" (RequestToken: bf2a83c8-675f-78fa-3bac-d5f04e5416a1, HandlerErrorCode: GeneralServiceException)
+```
+
