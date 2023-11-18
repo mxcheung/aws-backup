@@ -24,11 +24,34 @@ export class Backup extends Construct {
 
     // ... (unchanged code)
 
+    
+    const startWindow = Duration.hours(1);
+
+    const completionWindow = Duration.hours(2);
+
+    const deleteAfter = Duration.days(30);
+
+    // Reference the existing role
+    const role = iam.Role.fromRoleName(this, props.iamRoleName, props.iamRoleName)
+
     // Reference the existing backup vault using its name or ARN
     this.backupVault = bk.BackupVault.fromBackupVaultName(this, 'ExistingBackupVault', props.existingBackupVault);
 
     // Associate the backup vault with the backup plan
     this.backupPlan.addBackupVault('BackupVaultAssociation', this.backupVault);
+
+
+     // Define an AWS Backup plan
+    const scheduledBkRule = new backup.BackupPlanRule({
+      completionWindow,
+      startWindow,
+      deleteAfter: deleteAfter,
+      // Only cron expressions are supported
+      scheduleExpression: events.Schedule.cron({
+        minute: '0',
+        hour: '23',
+      })
+    });
 
     // ... (unchanged code)
 
