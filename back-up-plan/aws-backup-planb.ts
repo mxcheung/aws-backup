@@ -40,8 +40,7 @@ export class Backup extends Construct {
     // Associate the backup vault with the backup plan
     this.backupPlan.addBackupVault('BackupVaultAssociation', this.backupVault);
 
-
-     // Define an AWS Backup plan
+     // Define an AWS Backup plan rule
     const scheduledBkRule = new backup.BackupPlanRule({
       completionWindow,
       startWindow,
@@ -52,6 +51,24 @@ export class Backup extends Construct {
         hour: '23',
       })
     });
+
+    // Define an AWS Backup plan
+   const backupPlan = new backup.BackupPlan(this, 'BackupPlan', {
+      backupPlanName: props.backupPlanName,
+      backupPlanRules: [scheduledBkRule],
+      backupVault: backupVault
+    });
+
+   // Define BackupSelection
+    let resources :BackupResource[] = [];
+    props.resources.forEach(resourceArn=>{
+        resources.push(BackupResource.fromArn(resourceArn))
+    });
+    backupPlan.addSelection('BackupSelection', {
+      role: role,
+      resources: resources,
+    });
+
 
     // ... (unchanged code)
 
