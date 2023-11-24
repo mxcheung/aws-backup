@@ -63,5 +63,4 @@ WeeklyBackupAwsBackupPlanCdkStack | 5:04:13 AM | CREATE_FAILED       | AWS::Back
 (Service: Backup, Status Code: 403, Request ID: 1b646fd7-af06-4104-9350-c9ed82086b7c)" (RequestToken: bf2a83c8-675f-78fa-3bac-d5f04e5416a1, HandlerErrorCode: GeneralServiceException)
 ```
 
-igmobileotp:///?action=activate&regurl=auth.eu.abnamroclearing.com%3A8445%2Figst&serialnum=04812-23634&regpwd=7959F8B45F3A14D2
 
