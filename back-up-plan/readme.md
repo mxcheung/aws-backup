@@ -64,8 +64,15 @@ WeeklyBackupAwsBackupPlanCdkStack | 5:04:13 AM | CREATE_FAILED       | AWS::Back
 ```
 
 # restore
+Start the Restore Job: Once you have identified the recovery point you want to restore, initiate the restore job using the start-restore-job command:
 ```
 aws backup start-restore-job --recovery-point-arn YOUR_RECOVERY_POINT_ARN --metadata '{"TableName":"YOUR_TARGET_TABLE_NAME"}'
+```
+Replace YOUR_RECOVERY_POINT_ARN with the ARN (Amazon Resource Name) of the recovery point you want to restore, and YOUR_TARGET_TABLE_NAME with the name of the DynamoDB table where you want to restore the data.
+
+# monitor
+```
+aws backup describe-restore-job --restore-job-id YOUR_RESTORE_JOB_ID
 ```
 
 
