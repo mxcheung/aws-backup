@@ -63,4 +63,9 @@ WeeklyBackupAwsBackupPlanCdkStack | 5:04:13 AM | CREATE_FAILED       | AWS::Back
 (Service: Backup, Status Code: 403, Request ID: 1b646fd7-af06-4104-9350-c9ed82086b7c)" (RequestToken: bf2a83c8-675f-78fa-3bac-d5f04e5416a1, HandlerErrorCode: GeneralServiceException)
 ```
 
+# restore
+```
+aws backup start-restore-job --recovery-point-arn YOUR_RECOVERY_POINT_ARN --metadata '{"TableName":"YOUR_TARGET_TABLE_NAME"}'
+```
+
 
