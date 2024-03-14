@@ -75,4 +75,9 @@ Replace YOUR_RECOVERY_POINT_ARN with the ARN (Amazon Resource Name) of the recov
 aws backup describe-restore-job --restore-job-id YOUR_RESTORE_JOB_ID
 ```
 
+# update tags in dynamodb table
+aws dynamodb update-table --table-name TABLE_NAME --tags Key1=Value1 Key2=Value2 ...
 
+```
+aws dynamodb update-table --table-name MyTable --tags Environment=Production Department=IT
+```
